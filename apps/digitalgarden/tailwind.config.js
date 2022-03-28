@@ -13,4 +13,5 @@ module.exports = {
     ...createGlobPatternsForDependencies(__dirname),
   ],
   presets: [require('../../tailwind-workspace-preset.js')],
+  mode: 'jit'
 };
