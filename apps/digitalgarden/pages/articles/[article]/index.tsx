@@ -1,4 +1,7 @@
+import { readdirSync } from 'fs';
 import { GetStaticPaths, GetStaticProps } from 'next';
+import { join } from 'path';
+import process from 'process';
 import { ParsedUrlQuery } from 'querystring';
 import './index.module.css';
 
@@ -6,6 +9,8 @@ import './index.module.css';
 export interface ArticleProps extends ParsedUrlQuery{
   article: string;
 }
+
+const POSTS_PATH = join(process.cwd(), '_articles');
 
 export function Article(props: ArticleProps) {
   return (
@@ -16,19 +21,10 @@ export function Article(props: ArticleProps) {
 }
 
 export const getStaticPaths: GetStaticPaths<ArticleProps> = async () => {
+  const paths = readdirSync(POSTS_PATH).map(path => path.replace(/\.mdx?$/, ''))
+  .map(article => ({params: { article }}));
   return {
-    paths: [
-      {
-        params: {
-          article: 'page1'
-        }
-      },
-      {
-        params: {
-          article: 'page2'
-        }
-      }
-    ],
+    paths,
     fallback: false
   }
 }
