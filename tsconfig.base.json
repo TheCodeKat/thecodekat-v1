@@ -15,7 +15,10 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@thecodekat/markdown": ["libs/markdown/src/index.ts"]
+      "@thecodekat/markdown": ["libs/markdown/src/index.ts"],
+      "@thecodekat/shared/mdx-elements": [
+        "libs/shared/mdx-elements/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

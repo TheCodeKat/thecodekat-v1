@@ -3,6 +3,7 @@
   "projects": {
     "digitalgarden": "apps/digitalgarden",
     "digitalgarden-e2e": "apps/digitalgarden-e2e",
-    "markdown": "libs/markdown"
+    "markdown": "libs/markdown",
+    "shared-mdx-elements": "libs/shared/mdx-elements"
   }
 }

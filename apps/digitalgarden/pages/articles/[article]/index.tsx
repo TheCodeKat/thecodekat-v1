@@ -6,11 +6,16 @@ import { ParsedUrlQuery } from 'querystring';
 import './index.module.css';
 import { getParsedFileContentBySlug, renderMarkdown } from '@thecodekat/markdown';
 import { MDXRemote } from 'next-mdx-remote'
+import { Youtube } from '@thecodekat/shared/mdx-elements';
 
 /* eslint-disable-next-line */
 export interface ArticleProps extends ParsedUrlQuery{
   frontMatter: any
   html: any
+}
+
+const mdxElements = {
+  Youtube
 }
 
 const POSTS_PATH = join(process.cwd(), '_articles');
@@ -22,7 +27,7 @@ export function Article({ frontMatter, html }) {
         <h1>{frontMatter.title}</h1>
         <div>by {frontMatter.author.name} </div>
         <hr/>
-        <MDXRemote {...html} />
+        <MDXRemote {...html} components={mdxElements}/>
       </article>
     </div>
   );
