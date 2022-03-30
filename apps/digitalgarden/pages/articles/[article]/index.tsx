@@ -4,18 +4,26 @@ import { join } from 'path';
 import process from 'process';
 import { ParsedUrlQuery } from 'querystring';
 import './index.module.css';
+import { getParsedFileContentBySlug, renderMarkdown } from '@thecodekat/markdown';
+import { MDXRemote } from 'next-mdx-remote'
 
 /* eslint-disable-next-line */
 export interface ArticleProps extends ParsedUrlQuery{
-  article: string;
+  frontMatter: any
+  html: any
 }
 
 const POSTS_PATH = join(process.cwd(), '_articles');
 
-export function Article(props: ArticleProps) {
+export function Article({ frontMatter, html }) {
   return (
-    <div>
-      <h1>Welcome to {props.article}</h1>
+    <div className='m-6'>
+      <article className="prose prose-lg">
+        <h1>{frontMatter.title}</h1>
+        <div>by {frontMatter.author.name} </div>
+        <hr/>
+        <MDXRemote {...html} />
+      </article>
     </div>
   );
 }
@@ -30,9 +38,14 @@ export const getStaticPaths: GetStaticPaths<ArticleProps> = async () => {
 }
 
 export const getStaticProps: GetStaticProps<ArticleProps> = async ({ params }: {params: ArticleProps}) => {
+  const articleMarkdownContent = getParsedFileContentBySlug(params.article, POSTS_PATH);
+
+  const renderHTML = await renderMarkdown(articleMarkdownContent.content);
+
   return {
     props: {
-      article: params.article
+      frontMatter: articleMarkdownContent.frontMatter,
+      html: renderHTML
     }
   }
 }
