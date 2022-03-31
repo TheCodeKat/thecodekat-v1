@@ -6,7 +6,8 @@ import { ParsedUrlQuery } from 'querystring';
 import './index.module.css';
 import { getParsedFileContentBySlug, renderMarkdown } from '@thecodekat/markdown';
 import { MDXRemote } from 'next-mdx-remote'
-import { Youtube } from '@thecodekat/shared/mdx-elements';
+import dynamic from 'next/dynamic'
+
 
 /* eslint-disable-next-line */
 export interface ArticleProps extends ParsedUrlQuery{
@@ -15,7 +16,9 @@ export interface ArticleProps extends ParsedUrlQuery{
 }
 
 const mdxElements = {
-  Youtube
+  Youtube: dynamic(async () => {
+    return await import('@thecodekat/shared/mdx-elements/youtube/youtube')
+  })
 }
 
 const POSTS_PATH = join(process.cwd(), '_articles');

@@ -18,6 +18,9 @@
       "@thecodekat/markdown": ["libs/markdown/src/index.ts"],
       "@thecodekat/shared/mdx-elements": [
         "libs/shared/mdx-elements/src/index.ts"
+      ],
+      "@thecodekat/shared/mdx-elements/*": [
+        "libs/shared/mdx-elements/src/lib/*"
       ]
     }
   },
