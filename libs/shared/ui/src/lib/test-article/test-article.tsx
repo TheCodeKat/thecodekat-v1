@@ -5,7 +5,7 @@ export interface TestArticleProps {}
 
 export function TestArticle(props: TestArticleProps) {
   return (
-    <div>
+    <div className='bg-gray-100 p-8'>
       <h1>Welcome to TestArticle!</h1>
     </div>
   );
