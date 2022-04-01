@@ -21,7 +21,8 @@
       ],
       "@thecodekat/shared/mdx-elements/*": [
         "libs/shared/mdx-elements/src/lib/*"
-      ]
+      ],
+      "@thecodekat/shared/ui": ["libs/shared/ui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
