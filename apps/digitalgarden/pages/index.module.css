@@ -1,2 +1,10 @@
 .page {
 }
+
+@font-face {
+    font-family: 'Brass Mono';
+    font-style: normal;
+    font-weight: normal;
+    font-display: swap;
+    src: local('BrassMonoRegular'), url(/fonts/BrassMonoRegular.otf) format('otf');
+}

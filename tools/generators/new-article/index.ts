@@ -15,7 +15,7 @@ interface NewArticlesSchemaOptions {
 }
 
 export default async function (tree: Tree, schema: NewArticlesSchemaOptions) {
-  generateFiles(tree, joinPathFragments(__dirname, './files'), './_articles', {
+  generateFiles(tree, joinPathFragments(__dirname, './files'), './_posts', {
     title: schema.title,
     author: schema.author,
     excerpt: schema.excerpt || '',
